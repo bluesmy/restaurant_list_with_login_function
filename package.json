@@ -1,0 +1,22 @@
+{
+  "name": "restaurant_list_CRUD",
+  "version": "1.0.0",
+  "description": "使用 Node.js + Express 打造的餐廳清單網站，以 RESTful 路由重構，可管理餐廳清單，包括新增、閱讀、修改、刪除餐廳資訊等功能，也可依照餐廳名稱與分類進行搜尋，以及依照餐廳名稱、類別、地區、評分進行排序。",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.7.10"
+  },
+  "devDependencies": {}
+}
