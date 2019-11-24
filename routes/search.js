@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
 const sortConditions = require('../public/javascripts/sortConditions')
+const { authenticated } = require('../config/auth')
 
 // 搜尋 Restaurant
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   const keywordRegex = new RegExp(req.query.keyword, 'i')
   Restaurant.find(
     {
