@@ -8,7 +8,7 @@ const { authenticated } = require('../config/auth')
 router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated, (req, res) => {
   if (req.params.sortOrder === '1') {
     if (req.params.sortCondition === 'name') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ name: 1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -17,7 +17,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
     }
 
     else if (req.params.sortCondition === 'category') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ category: 1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -26,7 +26,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
     }
 
     else if (req.params.sortCondition === 'location') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ location: 1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -35,7 +35,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
     }
 
     else if (req.params.sortCondition === 'rating') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ rating: 1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -46,7 +46,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
 
   else if (req.params.sortOrder === '-1') {
     if (req.params.sortCondition === 'name') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ name: -1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -55,7 +55,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
     }
 
     else if (req.params.sortCondition === 'category') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ category: -1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -64,7 +64,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
     }
 
     else if (req.params.sortCondition === 'location') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ location: -1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)
@@ -73,7 +73,7 @@ router.get('/:sortCondition/:sortName/:sortOrder/:sortOrderName', authenticated,
     }
 
     else if (req.params.sortCondition === 'rating') {
-      Restaurant.find({})
+      Restaurant.find({ userId: req.user._id })
         .sort({ rating: -1 })
         .exec((err, restaurants) => {
           if (err) return console.error(err)

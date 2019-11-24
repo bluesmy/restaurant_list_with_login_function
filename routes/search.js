@@ -9,6 +9,7 @@ router.get('/', authenticated, (req, res) => {
   const keywordRegex = new RegExp(req.query.keyword, 'i')
   Restaurant.find(
     {
+      userId: req.user._id,
       $or: [
         { name: { $regex: keywordRegex, $options: "$i" } },
         { category: { $regex: keywordRegex } }
