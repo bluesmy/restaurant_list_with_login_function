@@ -1,15 +1,10 @@
 const express = require('express')               // 載入 express
 const app = express()                            // 建立 express instance
 const mongoose = require('mongoose')
-
-// 引用 express-handlebars
 const exphbs = require('express-handlebars')
-
-// 引用 body-parser
 const bodyParser = require('body-parser')
-
-// 引用 method-override
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 // 設定 bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -45,6 +40,12 @@ db.once('open', () => {
 
 // 載入 restaurant model
 const Restaurant = require('./models/restaurant.js')
+
+app.use(session({
+  secret: 'your secret key',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // 載入路由器
 app.use('/', require('./routes/home'))
