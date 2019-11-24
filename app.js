@@ -1,5 +1,8 @@
 const express = require('express')               // 載入 express
 const app = express()                            // 建立 express instance
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -66,6 +69,7 @@ app.use('/restaurants', require('./routes/restaurant'))
 app.use('/search', require('./routes/search'))
 app.use('/sort', require('./routes/sort'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auths'))
 
 // 設定 express port 3000
 app.listen(3000, () => {
