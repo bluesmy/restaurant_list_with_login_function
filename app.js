@@ -66,6 +66,7 @@ app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.fail_msg = req.flash('fail_msg')
   next()
 })
 

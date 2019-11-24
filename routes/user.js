@@ -13,7 +13,8 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/users/login'
+    failureRedirect: '/users/login',
+    failureFlash: true
   })(req, res, next)
 })
 
@@ -28,12 +29,12 @@ router.post('/register', (req, res) => {
 
   let errors = []
 
-  if (!name || !email || !password || !password2) {
-    errors.push({ message: '所有欄位都是必填' })
+  if (!email || !password || !password2) {
+    errors.push({ message: 'Email 及 Password 都是必填' })
   }
 
   if (password !== password2) {
-    errors.push({ message: '密碼輸入錯誤' })
+    errors.push({ message: '密碼不一致' })
   }
 
   if (errors.length > 0) {
@@ -70,7 +71,8 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                res.redirect('/')
+                req.flash('success_msg', '註冊成功！請登入後使用')
+                res.redirect('/users/login')
               })
               .catch(err => console.log(err))
           })
